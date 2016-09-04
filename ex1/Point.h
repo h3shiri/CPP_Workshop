@@ -7,7 +7,13 @@
 
 
 class Point {
+public:
+    Point();
+    Point(int x_coordinate, int y_coordinate);
 
+private:
+    int x_coordinate;
+    int y_coordinate;
 };
 
 
