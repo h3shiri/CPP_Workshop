@@ -23,7 +23,7 @@ public:
     void set(const int x_value , const int y_value);
     std::string toString();
     bool operator==(const Point& rhs);
-
+    Point &operator=(const Point& rhs);
 };
 
 

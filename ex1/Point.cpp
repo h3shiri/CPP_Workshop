@@ -63,19 +63,27 @@ bool Point::operator==(const Point& rhs) {
 }
 
 /**
+ * A copy assingment for the equal operator.
+ * @param rhs - the element to be copied from.
+ * @return - the relevant element after copying.
+ */
+Point& Point::operator=(const Point& rhs){
+    this->set(rhs.getX(), rhs.getY());
+    return *this;
+}
+/**
  * No memory to free so nothing to destruct.
  */
 Point::~Point() { return;}
 
-// TODO: remove tester
+// TODO: remove tester main eventually.
 int main(){
     Point p1 = Point(2,2);
     Point p2 = Point();
     Point p3 = Point();
     p3.set(2,2);
+    p2 = p1;
     cout << (p1.toString()) << "\n";
     cout << p2.toString() << "\n";
-    bool check = (p3 == p1);
-    cout << check;
     return 0;
 }
