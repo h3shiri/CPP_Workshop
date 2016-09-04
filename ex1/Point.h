@@ -6,14 +6,22 @@
 #define EX1_POINT_H
 
 
-class Point {
-public:
-    Point();
-    Point(int x_coordinate, int y_coordinate);
+#include <string>
+#include <iostream>
 
+class Point {
+/** data members */
 private:
     int x_coordinate;
     int y_coordinate;
+
+public:
+    Point(int x_coordinate = 0, int y_coordinate = 0);
+    ~Point();
+    int getX();
+    int getY();
+    void set(int x_value, int y_value);
+    std::string toString();
 };
 
 
