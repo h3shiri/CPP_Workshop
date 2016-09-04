@@ -18,10 +18,12 @@ private:
 public:
     Point(int x_coordinate = 0, int y_coordinate = 0);
     ~Point();
-    int getX();
-    int getY();
-    void set(int x_value, int y_value);
+    int getX() const;
+    int getY() const;
+    void set(const int x_value , const int y_value);
     std::string toString();
+    bool operator==(const Point& rhs);
+
 };
 
 

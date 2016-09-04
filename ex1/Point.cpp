@@ -20,20 +20,20 @@ Point::Point(int x_coordinate, int y_coordinate) {
  * A getter function for the x coordiante.
  * @return - the appropriate value.
  */
-int Point::getX() { return x_coordinate;}
+int Point::getX() const { return x_coordinate;}
 
 /**
  * A getter function for the y coordinate.
  * @return the appropriate value.
  */
-int Point::getY() { return y_coordinate;}
+int Point::getY() const { return y_coordinate;}
 
 /**
  * A setter function for a different set of coordinates.
  * @param x_value - the adjusted x value.
  * @param y_value - the adjusted y value.
  */
-void Point::set(int x_value, int y_value) {
+void Point::set(const int x_value, const int y_value) {
     this->x_coordinate = x_value;
     this->y_coordinate = y_value;
 }
@@ -49,16 +49,33 @@ string Point::toString() {
 }
 
 /**
+ * Overloading the == operator for Points.
+ * @param rhs - the element to be checked whether its equal.
+ * @return true iff the x-value and y-value are matching.
+ */
+bool Point::operator==(const Point& rhs) {
+    if ((this->getX() == rhs.getX()) and (this->getY() == rhs.getY())){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+/**
  * No memory to free so nothing to destruct.
  */
 Point::~Point() { return;}
 
 // TODO: remove tester
-//int main(){
-//    Point p1 = Point(2,2);
-//    Point p2 = Point();
-//    cout << (p1.toString()) << "\n";
-//    cout << p2.toString();
-//
-//    return 0;
-//}
+int main(){
+    Point p1 = Point(2,2);
+    Point p2 = Point();
+    Point p3 = Point();
+    p3.set(2,2);
+    cout << (p1.toString()) << "\n";
+    cout << p2.toString() << "\n";
+    bool check = (p3 == p1);
+    cout << check;
+    return 0;
+}
