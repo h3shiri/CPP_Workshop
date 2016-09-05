@@ -42,7 +42,7 @@ void Point::set(const int x_value, const int y_value) {
  * A toString function that outputs a point as a string
  * @return A string in the format: x_coordinate , y_coordinate.
  */
-string Point::toString() {
+string Point::toString() const {
     string s_x = to_string(this->x_coordinate);
     string s_y = to_string(this->y_coordinate);
     return s_x+","+s_y;
@@ -76,14 +76,93 @@ Point& Point::operator=(const Point& rhs){
  */
 Point::~Point() { return;}
 
+
+/**
+ * A default constructor.
+ * @return
+ */
+Node::Node() {
+    this->next = nullptr;
+    this->data = Point();
+}
+
+/**
+ * A copy constructor.
+ * @param node - the node to copy from
+ * @return
+ */
+Node::Node(const Node& node){
+    this->next = nullptr;
+    this->setData(node.getData());
+}
+
+/**
+ * A constructor from a given point.
+ * @param point
+ * @return
+ */
+Node::Node(const Point& point){
+    this->setData(point);
+    this->next = nullptr;
+}
+
+/**
+ * A destructor function for the node.
+ */
+Node::~Node() {free(this);}
+
+/**
+ * A getter function for the node's data
+ * @return - the relevant point data.
+ */
+Point Node::getData() const {
+    return data;
+}
+
+/**
+ * A getter function for the node's pointer to the next element.
+ * @return - pointer to the next node.
+ */
+Node* Node::getNext() const {
+    return next;
+}
+ /**
+  * A setter function for the node's point data.
+  * @param data - the new point data.
+  */
+void Node::setData(const Point &data) {
+    Node::data = data;
+}
+
+/**
+ * A setter function for the next node parameter.
+ * @param next - A pointer to the next node to be set.
+ */
+void Node::setNext(Node *next) {
+    Node::next = next;
+}
+
+/**
+ * An overloading of the equal operator between two nodes.
+ * @param rhs - the node to be compared to.
+ * @return true - iff the nodes have the same data.
+ */
+bool Node::operator==(const Node& rhs){
+    return (this->getData() == rhs.getData());
+}
+
+
+
 // TODO: remove tester main eventually.
 int main(){
-    Point p1 = Point(2,2);
+    Point p1 = Point(1,3);
     Point p2 = Point();
     Point p3 = Point();
     p3.set(2,2);
     p2 = p1;
-    cout << (p1.toString()) << "\n";
-    cout << p2.toString() << "\n";
+    Node * n1 = new Node(p3);
+    n1->setNext(new Node(p2));
+    cout << (*n1->getNext()).getData().toString();
     return 0;
 }
+

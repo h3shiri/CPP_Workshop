@@ -10,16 +10,21 @@
 class PointSet {
 private:
     int size;
-    Point *array;
+    Node *head;
+    Node *tail;
 
 public:
     PointSet();
     PointSet(const PointSet& sourceSet);
 
     int getSize() const;
-    Point *getArray() const;
+    Node *getHead() const;
 
-    bool add(const Point element);
+    Node *getTail() const;
+
+    bool add(Node& element);
+
+    bool contains(Node& element);
 };
 
 

@@ -21,9 +21,30 @@ public:
     int getX() const;
     int getY() const;
     void set(const int x_value , const int y_value);
-    std::string toString();
+    std::string toString() const;
     bool operator==(const Point& rhs);
     Point &operator=(const Point& rhs);
+};
+
+class Node{
+/** data memebers */
+private:
+    Point data;
+    Node *next;
+public:
+    Node();
+    Node(const Node& node);
+    Node(const Point& point);
+
+    void setNext(Node *next);
+
+    void setData(const Point &data);
+
+    Node *getNext() const;
+    Point getData() const;
+    bool operator==(const Node& rhs);
+
+    ~Node();
 };
 
 
