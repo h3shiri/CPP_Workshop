@@ -109,7 +109,7 @@ Node::Node(const Point& point){
 /**
  * A destructor function for the node.
  */
-Node::~Node() {free(this);}
+Node::~Node() { return;}
 
 /**
  * A getter function for the node's data
@@ -154,15 +154,15 @@ bool Node::operator==(const Node& rhs){
 
 
 // TODO: remove tester main eventually.
-int main(){
-    Point p1 = Point(1,3);
-    Point p2 = Point();
-    Point p3 = Point();
-    p3.set(2,2);
-    p2 = p1;
-    Node * n1 = new Node(p3);
-    n1->setNext(new Node(p2));
-    cout << (*n1->getNext()).getData().toString();
-    return 0;
-}
+//int main(){
+//    Point p1 = Point(1,3);
+//    Point p2 = Point();
+//    Point p3 = Point();
+//    p3.set(2,2);
+//    p2 = p1;
+//    Node * n1 = new Node(p3);
+//    n1->setNext(new Node(p2));
+//    cout << (*n1->getNext()).getData().toString();
+//    return 0;
+//}
 

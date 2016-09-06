@@ -9,7 +9,7 @@
 
 class PointSet {
 private:
-    int size;
+    int numOfElements;
     Node *head;
     Node *tail;
 
@@ -17,11 +17,12 @@ public:
     PointSet();
     PointSet(const PointSet& sourceSet);
 
-    int getSize() const;
+    int size() const;
     Node *getHead() const;
 
     Node *getTail() const;
 
+    std::string toString();
     bool add(Node& element);
 
     bool contains(Node& element);
