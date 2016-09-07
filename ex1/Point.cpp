@@ -173,7 +173,16 @@ bool Node::operator==(const Node& rhs){
     return (this->getData() == rhs.getData());
 }
 
-
+/**
+ * A utillity function checking whether the points are arranged in a
+ * @param p1
+ * @param p2
+ * @param p3
+ * @return
+ */
+int Point::counterClockWise(const Point& p1, const Point& p2, const Point& p3) {
+    return (p2.getX()- p1.getX()) * (p3.getY() - p1.getY()) - (p2.getY() - p1.getY()) * (p3.getX() - p1.getX());
+}
 
 // TODO: remove tester main eventually.
 //int main(){

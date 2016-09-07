@@ -25,6 +25,8 @@ public:
     bool operator==(const Point& rhs);
     Point &operator=(const Point& rhs);
     bool operator<(const Point& rhs);
+    int Point::counterClockWise(const Point& p1, const Point& p2, const Point& p3);
+
 };
 
 class Node{
@@ -44,8 +46,6 @@ public:
     Node *getNext() const;
     Point getData() const;
     bool operator==(const Node& rhs);
-
-
 
     ~Node();
 };
