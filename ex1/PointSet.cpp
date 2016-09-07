@@ -1,7 +1,7 @@
 //
 // Created by Shiri on 9/4/16.
 //
-
+#include <array>
 #include "PointSet.h"
 //TODO: test this class functionality.
 //TODO: add remove/delete functions.
@@ -96,7 +96,7 @@ bool PointSet::contains(Node& element){
         return !res;
     } else{
         Node * curr = head;
-        while(curr->getNext() != nullptr){
+        while(curr){
             if(*curr == element){
                 return res;
             } else{
@@ -137,11 +137,83 @@ bool PointSet::add(Node& element){
     return res;
 }
 
+bool PointSet::remove(Node& element){
+    bool res = false;
+    if(contains(element)){
+        Node * temp = getHead();
+        Node * next = temp->getNext();
+        if (size() == 1){
+            free(head);
+            head = nullptr;
+            tail = nullptr;
+            numOfElements--;
+            return !res;
+        /* In case we remove the head */
+        } else if(temp->getData() == element.getData()){
+            free(temp);
+            head = next;
+            numOfElements--;
+            return !res;
+        } else{
+            while(next){
+                if (next->getData() == element.getData()){
+                    if (next->getData() == getTail()->getData()){
+                        tail = temp;
+                    }
+                    temp->setNext(next->getNext());
+                    free(next);
+                    numOfElements--;
+                    return !res;
+                }
+                temp = next;
+                next = next->getNext();
+            }
+        }
+    }else{
+        return res;
+    }
+}
+
+/**
+ * A given function that prints out the set in the requierd format
+ * @return - the appropriate string corresponding to the set of points sorted lexicographically.
+ */
+std::string PointSet::sortingPrintOut(){
+    std::string res = "result\n";
+    int const length  = size();
+    Point *ar = new Point[length];
+    Node * temp = getHead();
+    for(int i = 0; i<length; i++){
+        Point tempPoint = temp->getData();
+        ar[i].set(tempPoint.getX(), tempPoint.getY());
+        temp = temp->getNext();
+    }
+    /* Sorting the elements with simple bubble sort */
+    Point swap = Point();
+    for (int i = 0 ; i < length; i++){
+        for (int j = 0 ; j < length - 1; j++){
+            if (!(ar[j] < ar[j+1])){
+                swap = ar[j];
+                ar[j] = ar[j+1];
+                ar[j+1] = swap;
+            }
+        }
+    }
+    /* arranging the printout */
+    for (int i=0; i<length; i++) {
+        Point a = ar[i];
+        res = (res + a.toString()+ "\n");
+    }
+    res = (res + '\n');
+    delete[] ar;
+    return res;
+}
+
 
 //TODO: remove silly main
 int main(){
-    Point p1 = Point(1,1);
-    Point p2 = Point(1,2);
+    Point p1 = Point(3,3);
+    Point p2 = Point(2,2);
 
     PointSet testSet = PointSet();
     Node * n1 = new Node(p1);
@@ -149,15 +221,20 @@ int main(){
     Node * n2 = new Node(p2);
     testSet.add(*n2);
 
+    PointSet testSet2 = PointSet();
+    testSet.remove(*n2);
     Point t3 = Point(1,1);
     Node * n3 = new Node(t3);
     testSet.add(*n3);
-    std::cout << "head:  " + testSet.getHead()->getData().toString()+'\n';
-    std::cout << "tail:  " + (testSet.getTail()->getData().toString()+"\n");
-    std::cout << "number of elements:  " + std::to_string(testSet.size())+'\n';
+//    std::cout << "head:  " + testSet.getHead()->getData().toString()+'\n';
+//    std::cout << "tail:  " + (testSet.getTail()->getData().toString()+"\n");
+//    std::cout << "number of elements:  " + std::to_string(testSet.size())+'\n';
     std::cout << "set of points:\n" + testSet.toString();
-    std::cout << (std::to_string(*n1<*n2)+'\n');
+//    std::cout << (std::to_string(p1<p2)+'\n');
+//    std::cout << "set of points:\n" + testSet2.toString();
 
+    std::cout << testSet.sortingPrintOut();
+    testSet2.~PointSet();
     testSet.~PointSet();
     std::cout << "check memory\n";
     return 0;

@@ -25,8 +25,11 @@ public:
 
     std::string toString();
     bool add(Node& element);
-
+    bool remove(Node& element);
     bool contains(Node& element);
+
+
+    std::string sortingPrintOut();
 };
 
 

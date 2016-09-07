@@ -67,13 +67,13 @@ bool Point::operator==(const Point& rhs) {
  * @param rhs - the given node target to be compared with.
  * @return true - iff the element's data is strictly less then the target node's data.
  */
-bool Node::operator<(const Node& rhs){
-    Point lhs = this->getData();
-    if(lhs.getX() < rhs.getData().getX()) {
+bool Point::operator<(const Point& rhs){
+    Point lhs = *this;
+    if(lhs.getX() < rhs.getX()) {
         return true;
     /* in case they have equal X-value, check Y-Values comparison */
-    }else if(lhs.getX() == rhs.getData().getX()){
-        if(lhs.getY() < rhs.getData().getY()){
+    }else if(lhs.getX() == rhs.getX()){
+        if(lhs.getY() < rhs.getY()){
             return true;
         } else{
             return false;
@@ -163,6 +163,7 @@ void Node::setNext(Node *next) {
     Node::next = next;
 }
 
+//TODO: test error in this operator or possibly just remove.
 /**
  * An overloading of the equal operator between two nodes.
  * @param rhs - the node to be compared to.

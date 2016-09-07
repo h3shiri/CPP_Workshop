@@ -24,6 +24,7 @@ public:
     std::string toString() const;
     bool operator==(const Point& rhs);
     Point &operator=(const Point& rhs);
+    bool operator<(const Point& rhs);
 };
 
 class Node{
@@ -44,7 +45,7 @@ public:
     Point getData() const;
     bool operator==(const Node& rhs);
 
-    bool operator< (const Node& rhs);
+
 
     ~Node();
 };
