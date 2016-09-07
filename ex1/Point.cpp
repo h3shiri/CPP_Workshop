@@ -3,8 +3,10 @@
 //
 
 #include "Point.h"
+#include "ConvexHull.h"
 using namespace std;
 
+class Vec;
 /**
  * The class constructor
  * @param x_coordinate - the x coordinate value.
@@ -187,13 +189,13 @@ bool Node::operator==(const Node& rhs){
 }
 
 // TODO: remove tester main eventually.
-//int main(){
-//    Point p1 = Point(1,3);
-//    Point p2 = Point();
-//    Point p3 = Point();
-//    p3.set(2,2);
-//    std::cout << p2.angleWithRelationToXaxis(p3);
-//
-//    return 0;
-//}
+int main(){
+    Point p1 = Point(1,3);
+    Point p2 = Point();
+    Point p3 = Point();
+    p3.set(2,2);
+    std::cout << p2.angleWithRelationToXaxis(p3);
+
+    return 0;
+}
 

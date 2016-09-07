@@ -6,7 +6,6 @@
 #define EX1_CONVEXHULL_H
 
 
-#include "PointSet.h"
 class ConvexHull {
 
 };
@@ -16,7 +15,7 @@ private:
     int y_cor;
 
 public:
-    Vec(int x_value = 0, int y_value = 0);
+    Vec(int x_val = 0, int y_val = 0);
     Vec(Point pointA, Point pointB);
     int getX_coordinate() const;
     int getY_coordinate() const;

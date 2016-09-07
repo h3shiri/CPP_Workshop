@@ -1,7 +1,7 @@
 //
 // Created by Shiri on 9/7/16.
 //
-
+#include "PointSet.h"
 #include "ConvexHull.h"
 #include <math.h>
 
@@ -11,9 +11,9 @@
  * @param y_value
  * @return
  */
-Vec::Vec(int x_value = 0, int y_value = 0){
-    x_cor = x_value;
-    y_cor = y_value;
+Vec::Vec(int x_val, int y_val){
+    x_cor = x_val;
+    y_cor = y_val;
 }
 
 /**
