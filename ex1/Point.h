@@ -44,6 +44,8 @@ public:
     Point getData() const;
     bool operator==(const Node& rhs);
 
+    bool operator< (const Node& rhs);
+
     ~Node();
 };
 

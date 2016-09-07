@@ -14,6 +14,7 @@
     <list default="true" id="0e78bda4-a173-44bc-b61c-e53daec0aa22" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Point.cpp" afterPath="$PROJECT_DIR$/Point.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Point.h" afterPath="$PROJECT_DIR$/Point.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PointSet.cpp" afterPath="$PROJECT_DIR$/PointSet.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PointSet.h" afterPath="$PROJECT_DIR$/PointSet.h" />
     </list>
@@ -48,8 +49,8 @@
       <file leaf-file-name="Point.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Point.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1825">
-              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state relative-caret-position="-2593">
+              <caret line="67" column="86" selection-start-line="67" selection-start-column="86" selection-end-line="67" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -58,8 +59,8 @@
       <file leaf-file-name="Point.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Point.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+            <state relative-caret-position="406">
+              <caret line="46" column="37" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="37" />
               <folding>
                 <element signature="e#80#97#0" expanded="true" />
               </folding>
@@ -70,8 +71,8 @@
       <file leaf-file-name="PointSet.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PointSet.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="143" column="21" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+            <state relative-caret-position="3792">
+              <caret line="158" column="4" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -80,8 +81,8 @@
       <file leaf-file-name="PointSet.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PointSet.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+            <state relative-caret-position="100">
+              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -102,9 +103,9 @@
       <list>
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/PointSet.h" />
         <option value="$PROJECT_DIR$/Point.h" />
         <option value="$PROJECT_DIR$/Point.cpp" />
-        <option value="$PROJECT_DIR$/PointSet.h" />
         <option value="$PROJECT_DIR$/PointSet.cpp" />
       </list>
     </option>
@@ -351,7 +352,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1472982014457</updated>
-      <workItem from="1472982018616" duration="30108000" />
+      <workItem from="1472982018616" duration="32262000" />
     </task>
     <task id="LOCAL-00001" summary="What up ?&#10;Should speed up soon.">
       <created>1472984932326</created>
@@ -388,11 +389,18 @@
       <option name="project" value="LOCAL" />
       <updated>1473103151608</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Basic testing of the PointSet done">
+      <created>1473189111557</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1473189111557</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30108000" />
+    <option name="totallyTimeSpent" value="32262000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="45" width="1904" height="1009" extended-state="0" />
@@ -435,11 +443,12 @@
     <MESSAGE value="Progress with the Point (2)" />
     <MESSAGE value="Starting to work on the PointSet..)" />
     <MESSAGE value="Some good progress on the points and nodes while having a foundation for the pointSet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some good progress on the points and nodes while having a foundation for the pointSet." />
+    <MESSAGE value="Basic testing of the PointSet done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic testing of the PointSet done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -460,10 +469,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PointSet.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Point.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+        <state relative-caret-position="406">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="37" />
           <folding>
             <element signature="e#80#97#0" expanded="true" />
           </folding>
@@ -472,24 +489,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Point.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1825">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PointSet.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        <state relative-caret-position="-2593">
+          <caret line="67" column="86" selection-start-line="67" selection-start-column="86" selection-end-line="67" selection-end-column="86" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PointSet.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="143" column="21" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+        <state relative-caret-position="3792">
+          <caret line="158" column="4" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="4" />
           <folding />
         </state>
       </provider>

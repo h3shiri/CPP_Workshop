@@ -63,6 +63,27 @@ bool Point::operator==(const Point& rhs) {
 }
 
 /**
+ * An overloading of the smaller then operator (weak ordering)
+ * @param rhs - the given node target to be compared with.
+ * @return true - iff the element's data is strictly less then the target node's data.
+ */
+bool Node::operator<(const Node& rhs){
+    Point lhs = this->getData();
+    if(lhs.getX() < rhs.getData().getX()) {
+        return true;
+    /* in case they have equal X-value, check Y-Values comparison */
+    }else if(lhs.getX() == rhs.getData().getX()){
+        if(lhs.getY() < rhs.getData().getY()){
+            return true;
+        } else{
+            return false;
+        }
+    } else{
+        return false;
+    }
+}
+
+/**
  * A copy assingment for the equal operator.
  * @param rhs - the element to be copied from.
  * @return - the relevant element after copying.

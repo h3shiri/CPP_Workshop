@@ -32,6 +32,20 @@ PointSet::PointSet() {
 }
 
 /**
+ * A destructor for the pointSet Class.
+ */
+PointSet::~PointSet() {
+    Node * curr = head;
+    while (head){
+        head = head->getNext();
+        delete(curr);
+        curr = head;
+    }
+    tail = nullptr;
+    numOfElements = 0;
+}
+
+/**
  * A getter function for the array size.
  * @return - the relevant size.
  */
@@ -127,7 +141,7 @@ bool PointSet::add(Node& element){
 //TODO: remove silly main
 int main(){
     Point p1 = Point(1,1);
-    Point p2 = Point(2,2);
+    Point p2 = Point(1,2);
 
     PointSet testSet = PointSet();
     Node * n1 = new Node(p1);
@@ -142,6 +156,9 @@ int main(){
     std::cout << "tail:  " + (testSet.getTail()->getData().toString()+"\n");
     std::cout << "number of elements:  " + std::to_string(testSet.size())+'\n';
     std::cout << "set of points:\n" + testSet.toString();
+    std::cout << (std::to_string(*n1<*n2)+'\n');
 
+    testSet.~PointSet();
+    std::cout << "check memory\n";
     return 0;
 };

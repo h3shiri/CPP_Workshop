@@ -16,6 +16,7 @@ private:
 public:
     PointSet();
     PointSet(const PointSet& sourceSet);
+    ~PointSet();
 
     int size() const;
     Node *getHead() const;
