@@ -211,31 +211,31 @@ std::string PointSet::sortingPrintOut(){
 
 
 //TODO: remove silly main
-int main(){
-    Point p1 = Point(3,3);
-    Point p2 = Point(2,2);
-
-    PointSet testSet = PointSet();
-    Node * n1 = new Node(p1);
-    testSet.add(*n1);
-    Node * n2 = new Node(p2);
-    testSet.add(*n2);
-
-    PointSet testSet2 = PointSet();
-    testSet.remove(*n2);
-    Point t3 = Point(1,1);
-    Node * n3 = new Node(t3);
-    testSet.add(*n3);
-//    std::cout << "head:  " + testSet.getHead()->getData().toString()+'\n';
-//    std::cout << "tail:  " + (testSet.getTail()->getData().toString()+"\n");
-//    std::cout << "number of elements:  " + std::to_string(testSet.size())+'\n';
-    std::cout << "set of points:\n" + testSet.toString();
-//    std::cout << (std::to_string(p1<p2)+'\n');
-//    std::cout << "set of points:\n" + testSet2.toString();
-
-    std::cout << testSet.sortingPrintOut();
-    testSet2.~PointSet();
-    testSet.~PointSet();
-    std::cout << "check memory\n";
-    return 0;
-};
+//int main(){
+//    Point p1 = Point(3,3);
+//    Point p2 = Point(2,2);
+//
+//    PointSet testSet = PointSet();
+//    Node * n1 = new Node(p1);
+//    testSet.add(*n1);
+//    Node * n2 = new Node(p2);
+//    testSet.add(*n2);
+//
+//    PointSet testSet2 = PointSet();
+//    testSet.remove(*n2);
+//    Point t3 = Point(1,1);
+//    Node * n3 = new Node(t3);
+//    testSet.add(*n3);
+////    std::cout << "head:  " + testSet.getHead()->getData().toString()+'\n';
+////    std::cout << "tail:  " + (testSet.getTail()->getData().toString()+"\n");
+////    std::cout << "number of elements:  " + std::to_string(testSet.size())+'\n';
+//    std::cout << "set of points:\n" + testSet.toString();
+////    std::cout << (std::to_string(p1<p2)+'\n');
+////    std::cout << "set of points:\n" + testSet2.toString();
+//
+//    std::cout << testSet.sortingPrintOut();
+//    testSet2.~PointSet();
+//    testSet.~PointSet();
+//    std::cout << "check memory\n";
+//    return 0;
+//};

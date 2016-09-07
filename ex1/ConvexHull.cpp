@@ -3,6 +3,7 @@
 //
 
 #include "ConvexHull.h"
+#include <math.h>
 
 /**
  * A default constructor
@@ -11,13 +12,19 @@
  * @return
  */
 Vec::Vec(int x_value = 0, int y_value = 0){
-    x_coordinate = x_value;
-    y_coordinate = y_value;
+    x_cor = x_value;
+    y_cor = y_value;
 }
 
+/**
+ * A secondary constructor made from 2 points
+ * @param pointA - first point
+ * @param pointB - second point
+ * @return - the relevant 2D vector.
+ */
 Vec::Vec(Point pointA, Point pointB){
-    x_coordinate = (pointB.getX() - pointA.getX());
-    y_coordinate = (pointB.getY() - pointA.getY());
+    x_cor = (pointB.getX() - pointA.getX());
+    y_cor = (pointB.getY() - pointA.getY());
 }
 
 /**
@@ -25,7 +32,7 @@ Vec::Vec(Point pointA, Point pointB){
  * @param rhs - the right hand side argument.
  * @return - the resulting dot product.
  */
-int Vec::dotProduct(const Vec& rhs){
+double Vec::dotProduct(const Vec& rhs) const {
     return ((getX_coordinate()*rhs.getX_coordinate()) + (getY_coordinate()*rhs.getY_coordinate()));
 }
 
@@ -34,8 +41,25 @@ int Vec::dotProduct(const Vec& rhs){
  * @param rhs - the second vector argument.
  * @return - the appropriate cross value.
  */
-int Vec::crossProduct(const Vec& rhs){
+int Vec::crossProduct(const Vec& rhs) const{
     return ((getX_coordinate()*rhs.getY_coordinate()) - (rhs.getX_coordinate()*getY_coordinate()));
+}
+
+/**
+ * Returns the norm of the vector.
+ * @return - the appropriate value.
+ */
+double Vec::norm() const {
+    return sqrt(getX_coordinate()*getX_coordinate() + getY_coordinate()*getY_coordinate());
+}
+
+/**
+ * Calculating the angle between two vectors.
+ * @param rhs - the target argument.
+ * @return - the appropriate value for cosine in Radians.
+ */
+double Vec::getAngle(const Vec& rhs){
+    return (dotProduct(rhs)/(norm()*rhs.norm()));
 }
 
 /**
@@ -43,14 +67,14 @@ int Vec::crossProduct(const Vec& rhs){
  * @return - the appropriate y value of the vector.
  */
 int Vec::getX_coordinate() const {
-    return x_coordinate;
+    return x_cor;
 }
 /**
  * A getter function for the x-coordinate
  * @return - the appropriate x value
  */
 int Vec::getY_coordinate() const {
-    return y_coordinate;
+    return y_cor;
 }
 
 

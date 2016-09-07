@@ -49,17 +49,36 @@ string Point::toString() const {
 }
 
 /**
+ * A utillity function checking whether the points are arranged in a counter clockwise
+ * with prespective to p1 as base.
+ * @param p1 - the first point.
+ * @param p2 - the second point.
+ * @param p3 - the third point.
+ * @return
+ */
+int Point::counterClockWise(const Point& p1, const Point& p2, const Point& p3) {
+    return (p2.getX()- p1.getX()) * (p3.getY() - p1.getY()) - (p2.getY() - p1.getY()) * (p3.getX() - p1.getX());
+}
+
+/**
+ * calculating the angle with relation to the X-axis.
+ * @param rhs - the given point to be calculated.
+ * @return the relevant cosine of the angle in radians.
+ */
+double Point::angleWithRelationToXaxis(const Point& rhs){
+    Vec v1 = Vec (*this, rhs);
+    Vec v2 = Vec((rhs.getX()-getX()), getY());
+    double angle = v1.getAngle(v2);
+    return angle;
+}
+
+/**
  * Overloading the == operator for Points.
  * @param rhs - the element to be checked whether its equal.
  * @return true iff the x-value and y-value are matching.
  */
 bool Point::operator==(const Point& rhs) {
-    if ((this->getX() == rhs.getX()) and (this->getY() == rhs.getY())){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return ((this->getX() == rhs.getX()) and (this->getY() == rhs.getY()));
 }
 
 /**
@@ -72,15 +91,9 @@ bool Point::operator<(const Point& rhs){
     if(lhs.getX() < rhs.getX()) {
         return true;
     /* in case they have equal X-value, check Y-Values comparison */
-    }else if(lhs.getX() == rhs.getX()){
-        if(lhs.getY() < rhs.getY()){
-            return true;
-        } else{
-            return false;
-        }
-    } else{
-        return false;
     }
+
+    return ((lhs.getX() == rhs.getX()) && (lhs.getY() < rhs.getY()));
 }
 
 /**
@@ -173,27 +186,14 @@ bool Node::operator==(const Node& rhs){
     return (this->getData() == rhs.getData());
 }
 
-/**
- * A utillity function checking whether the points are arranged in a
- * @param p1
- * @param p2
- * @param p3
- * @return
- */
-int Point::counterClockWise(const Point& p1, const Point& p2, const Point& p3) {
-    return (p2.getX()- p1.getX()) * (p3.getY() - p1.getY()) - (p2.getY() - p1.getY()) * (p3.getX() - p1.getX());
-}
-
 // TODO: remove tester main eventually.
 //int main(){
 //    Point p1 = Point(1,3);
 //    Point p2 = Point();
 //    Point p3 = Point();
 //    p3.set(2,2);
-//    p2 = p1;
-//    Node * n1 = new Node(p3);
-//    n1->setNext(new Node(p2));
-//    cout << (*n1->getNext()).getData().toString();
+//    std::cout << p2.angleWithRelationToXaxis(p3);
+//
 //    return 0;
 //}
 

@@ -12,17 +12,21 @@ class ConvexHull {
 };
 class Vec{
 private:
-    int x_coordinate;
-    int y_coordinate;
+    int x_cor;
+    int y_cor;
 
 public:
     Vec(int x_value = 0, int y_value = 0);
     Vec(Point pointA, Point pointB);
-    int dotProduct(const Vec& rhs);
-    int crossProduct(const Vec& rhs);
-
     int getX_coordinate() const;
     int getY_coordinate() const;
+
+    double dotProduct(const Vec& rhs) const;
+    int crossProduct(const Vec& rhs) const;
+    double norm() const;
+    double getAngle(const Vec& rhs);
+
+
 
 };
 
