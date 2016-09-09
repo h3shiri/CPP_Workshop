@@ -15,22 +15,38 @@ private:
 
 public:
     PointSet();
-    PointSet(const PointSet& sourceSet);
+
+    PointSet(const PointSet &sourceSet);
+
     ~PointSet();
 
     int size() const;
+
     Node *getHead() const;
 
     Node *getTail() const;
 
     std::string toString();
-    bool add(Node& element);
-    bool remove(Node& element);
-    bool contains(Node& element);
 
+    bool add(const Point &element);
+
+    bool remove(Point &element);
+
+    bool contains(Node &element) const;
 
     std::string sortingPrintOut();
+
+    Point traceBase();
+
+
+    bool operator==(const PointSet &rhs);
+
+    bool operator!=(const PointSet &rhs);
+
+    PointSet operator-(const PointSet &rhs);
+
+    PointSet operator&(const PointSet &rhs);
+
+
 };
-
-
 #endif //EX1_POINTSET_H

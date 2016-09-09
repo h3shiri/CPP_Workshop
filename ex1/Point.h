@@ -25,9 +25,10 @@ public:
     bool operator==(const Point& rhs);
     Point &operator=(const Point& rhs);
     bool operator<(const Point& rhs);
-    int counterClockWise(const Point& p1, const Point& p2, const Point& p3);
+    static int counterClockWise(const Point& p1, const Point& p2, const Point& p3);
     double angleWithRelationToXaxis(const Point& rhs);
 
+    int dotProduct(const Point& rhs) const;
 };
 
 class Node{

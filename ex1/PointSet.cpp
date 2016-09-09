@@ -3,8 +3,9 @@
 //
 #include <array>
 #include "PointSet.h"
+
+
 //TODO: test this class functionality.
-//TODO: add remove/delete functions.
 /**
  * A copy constructor from an existing pointSet.
  * @param size - the size of the array.
@@ -15,8 +16,8 @@ PointSet::PointSet(const PointSet& sourceSet){
     this->numOfElements = sourceSet.size();
     const Node *temp = sourceSet.getHead();
     while (temp->getNext() != nullptr){
-        Node freshNode = Node(temp->getData());
-        this->add(freshNode);
+        Point freshPoint = temp->getData();
+        this->add(freshPoint);
         temp = temp->getNext();
     }
 }
@@ -90,7 +91,8 @@ std::string PointSet::toString() {
  * @param element - the given target.
  * @return true - iff the element is within the set.
  */
-bool PointSet::contains(Node& element){
+bool PointSet::contains(Node& element) const
+{
     bool res = true;
     if (numOfElements == 0){
         return !res;
@@ -112,7 +114,9 @@ bool PointSet::contains(Node& element){
  * @param element - the new element.
  * @return true iff the lement was successfuly added to the set.
  */
-bool PointSet::add(Node& element){
+bool PointSet::add(const Point& point){
+    Node * nodeElement = new Node(point);
+    Node element = *nodeElement;
     bool res = false;
     Node * toInsert = new Node(element);
     /* In case there are no elements */
@@ -134,10 +138,13 @@ bool PointSet::add(Node& element){
             res = false;
         }
     }
+    free(nodeElement);
     return res;
 }
 
-bool PointSet::remove(Node& element){
+bool PointSet::remove(Point& point){
+    Node * nodeElement = new Node(point);
+    Node element = *nodeElement;
     bool res = false;
     if(contains(element)){
         Node * temp = getHead();
@@ -147,12 +154,14 @@ bool PointSet::remove(Node& element){
             head = nullptr;
             tail = nullptr;
             numOfElements--;
+            free(nodeElement);
             return !res;
         /* In case we remove the head */
         } else if(temp->getData() == element.getData()){
             free(temp);
             head = next;
             numOfElements--;
+            free(nodeElement);
             return !res;
         } else{
             while(next){
@@ -163,6 +172,7 @@ bool PointSet::remove(Node& element){
                     temp->setNext(next->getNext());
                     free(next);
                     numOfElements--;
+                    free(nodeElement);
                     return !res;
                 }
                 temp = next;
@@ -170,6 +180,7 @@ bool PointSet::remove(Node& element){
             }
         }
     }else{
+        free(nodeElement);
         return res;
     }
 }
@@ -208,6 +219,95 @@ std::string PointSet::sortingPrintOut(){
     delete[] ar;
     return res;
 }
+
+/**
+ * A tracking function for resolving the leftmost coordinate.
+ * @return - the relevant point.
+ */
+Point PointSet::traceBase() {
+    Node * curr = getHead();
+    Point res = getHead()->getData();
+    Point temp = Point();
+    for (int i = 0; i < size()-1; i++) {
+        temp = curr->getNext()->getData();
+        /* using the overridden < operator to determine a base coordinate */
+        if (temp < res){
+            res = temp;
+        }
+    }
+    return res;
+}
+
+/**
+ * An overraide of the equal comparison operator.
+ * @param rhs - the target set of poits
+ * @return - true iff the sets contain the same points.
+ */
+bool PointSet::operator==(const PointSet& rhs){
+    bool res = true;
+    int length = size();
+    if (length != rhs.size()){
+        return false;
+    }
+    Node * curr = rhs.getHead();
+    while(curr){
+        if (contains(*curr)){
+            res = false;
+            break;
+        }
+        curr = curr->getNext();
+    }
+    return res;
+}
+
+/**
+ * An override of the not equl operator.
+ * @param rhs - the target to be compared with.
+ * @return - true iff the sets contain different points.
+ */
+bool PointSet::operator!=(const PointSet& rhs){
+    return (!((*this) == rhs));
+
+}
+
+/**
+ * This is an override of the substruction operator.
+ * @param rhs - the sbstruction set of elements.
+ * @return - a new point set without the substruction set.
+ */
+PointSet PointSet::operator-(const PointSet &rhs)
+{
+    PointSet freshPointSet = PointSet();
+    Node * curr = getHead();
+    while(curr)
+    {
+        if(!(rhs.contains(*curr)))
+        {
+            freshPointSet.add(curr->getData());
+        }
+        curr = curr->getNext();
+    }
+}
+
+/**
+ * An override to the the and operator.
+ * @param rhs - the target point set to be intersected with.
+ * @return - A new point set containing only the common elements.
+ */
+PointSet PointSet::operator&(const PointSet &rhs)
+{
+    PointSet freshPointSet = PointSet();
+    Node * curr = getHead();
+    while(curr)
+    {
+        if(rhs.contains(*curr))
+        {
+            freshPointSet.add(curr->getData());
+        }
+        curr = curr->getNext();
+    }
+}
+
 
 
 //TODO: remove silly main

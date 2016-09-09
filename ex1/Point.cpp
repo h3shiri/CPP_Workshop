@@ -188,14 +188,26 @@ bool Node::operator==(const Node& rhs){
     return (this->getData() == rhs.getData());
 }
 
-// TODO: remove tester main eventually.
-int main(){
-    Point p1 = Point(1,3);
-    Point p2 = Point();
-    Point p3 = Point();
-    p3.set(2,2);
-    std::cout << p2.angleWithRelationToXaxis(p3);
 
-    return 0;
+/**
+ * A simple dot product.
+ * @param rhs - the right hand side argument.
+ * @return - the resulting dot product.
+ */
+int Point::dotProduct(const Point& rhs) const{
+    return (getX()*rhs.getX() + getY()*rhs.getY());
 }
+
+
+
+// TODO: remove tester main eventually.
+//int main(){
+//    Point p1 = Point(1,3);
+//    Point p2 = Point();
+//    Point p3 = Point();
+//    p3.set(2,2);
+//    std::cout << p2.angleWithRelationToXaxis(p3);
+//
+//    return 0;
+//}
 
