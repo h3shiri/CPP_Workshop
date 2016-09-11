@@ -128,7 +128,7 @@ bool PointSet::add(const Point& point){
         res = true;
 
     /* Only one element or more in the array */
-    } else if (numOfElements == 1){
+    } else if (numOfElements >= 1){
         if (!(this->contains(element))){
             tail->setNext(toInsert);
             tail = toInsert;
@@ -146,7 +146,8 @@ bool PointSet::remove(Point& point){
     Node * nodeElement = new Node(point);
     Node element = *nodeElement;
     bool res = false;
-    if(contains(element)){
+    if(contains(element))
+    {
         Node * temp = getHead();
         Node * next = temp->getNext();
         if (size() == 1){
@@ -163,10 +164,15 @@ bool PointSet::remove(Point& point){
             numOfElements--;
             free(nodeElement);
             return !res;
-        } else{
-            while(next){
-                if (next->getData() == element.getData()){
-                    if (next->getData() == getTail()->getData()){
+        } 
+        else
+        {
+            while(next)
+            {
+                if (next->getData() == element.getData())
+                {
+                    if (next->getData() == getTail()->getData())
+                    {
                         tail = temp;
                     }
                     temp->setNext(next->getNext());
@@ -179,7 +185,10 @@ bool PointSet::remove(Point& point){
                 next = next->getNext();
             }
         }
-    }else{
+        return !res;
+    }
+    else
+    {
         free(nodeElement);
         return res;
     }
@@ -287,6 +296,7 @@ PointSet PointSet::operator-(const PointSet &rhs)
         }
         curr = curr->getNext();
     }
+    return freshPointSet;
 }
 
 /**
@@ -306,6 +316,7 @@ PointSet PointSet::operator&(const PointSet &rhs)
         }
         curr = curr->getNext();
     }
+    return freshPointSet;
 }
 
 

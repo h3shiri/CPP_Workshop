@@ -80,7 +80,7 @@ double Point::angleWithRelationToXaxis(const Point& rhs){
  * @return true iff the x-value and y-value are matching.
  */
 bool Point::operator==(const Point& rhs) {
-    return ((this->getX() == rhs.getX()) and (this->getY() == rhs.getY()));
+    return ((this->getX() == rhs.getX()) && (this->getY() == rhs.getY()));
 }
 
 /**

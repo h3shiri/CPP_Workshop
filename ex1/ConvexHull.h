@@ -9,7 +9,7 @@
 class ConvexHull {
 public:
     static Point * sortByAngle(const Point& base, Point * array, int & numOfElements);
-    static void removeRedundantPointsOnLine(Point * array, int & numOfElements, int &realLength);
+    static void removeRedundantPointsOnLine(Point * array, int & numOfElements, int &realLength, Point * res);
 };
 
 
