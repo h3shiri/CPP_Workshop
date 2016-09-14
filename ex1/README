@@ -1,0 +1,18 @@
+h3shiri
+
+We applied the converHull algorithm we a simple stack.
+firstly we sorted the input by angle in correspondence to thte base point (lowest x value and y value incase of many).
+Then we inserted the first two nodes into the stack, from there on we insert whenever we turn right.
+In case of a left turn we shall pop the previous element and continue the algo from the re on..)
+
+In addition we implemented the point call rep[resenting a point in the 2 dimenstional field.
+On top of that we have the point set class which represents the appropriate mathematical object
+aka a set of Points. this has been implemented with a linked list as the underlaying mechanism.
+The link list has nodes which have their own seprate class representation .
+
+The overall complexity of the algorithm on a good day is O(nlogn) in our lovely case might be more due to spendful use
+of sorting mechanism. 
+
+Thank you for your precious time,
+May the force be with you,
+Winter is coming!:)
