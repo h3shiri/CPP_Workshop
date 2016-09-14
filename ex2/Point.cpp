@@ -58,8 +58,8 @@ Point& operator=(const Point& other)
  */
 bool operator==(const Point& rhs)
 {
-    double diffX = std::abs((getX() - rhs.getX()));
-    double diffY = std::abs((getY() - rhs.getY()));
+    double diffX = std::fabs((getX() - rhs.getX()));
+    double diffY = std::fabs((getY() - rhs.getY()));
     double totalDiff = (diffX + diffY);
     return (totalDiff < EPSILON);
 }
