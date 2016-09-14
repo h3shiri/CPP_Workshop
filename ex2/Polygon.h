@@ -7,21 +7,30 @@
 #include <vector>
 #include "Edge.h"
 
-class Polygon {
+class Polygon
+{
 public:
-    virtual Polygon() = delete;
+    /**
+     * The default constructor.
+     */
+    Polygon();
+
+    /**
+     * A simple destructor.
+     */
+    virtual ~Polygon();
 
     /**
      * A simple function adding an edge into the polygon edges.
      * @param edge - the new edge that shall be appended.
      */
-    virtual void AddEdge(const Edge edge);
+    virtual void addEdge(const Edge edge);
 
     /**
      * A simple function adding a point into the polygon points.
      * @param edge - the new edge that shall be appended.
      */
-    virtual void AddPoint(const Point point);
+    virtual void addPoint(const Point point);
 
     /**
      * A getter function for the edges vector.

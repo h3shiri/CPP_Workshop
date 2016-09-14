@@ -5,7 +5,8 @@
 #include "ShapeAlgorithms.h"
 #include "Point.h"
 
-class Edge {
+class Edge
+{
 public:
     /**
      * The default constructor for the edge class.
