@@ -7,7 +7,7 @@
  * @param B -  the second point.
  * @param C - the third point.
  */
-Triangle::Triangle(const Point A = Point(), const Point B = Point (), const Point C = Point())
+Triangle::Triangle(const Point A, const Point B, const Point C)
 {
     Edge AB = Edge(A, B);
     Edge BC = Edge(B, C);

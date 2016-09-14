@@ -40,14 +40,13 @@ void Point::setCoordinates(CordType x_value, CordType y_value)
 }
 
 /**
- * overloading the the substitution operator.
- * @param - the other point to be compared with.
- * @return - the new point that has been assigned with.
+ * A copy assignment for the equal operator.
+ * @param rhs - the element to be copied from.
+ * @return - the relevant element after copying.
  */
-Point& operator=(const Point& other)
+Point& Point::operator=(const Point& rhs)
 {
-    this->_Xvalue = other.getX();
-    this->_Yvalue = other.getY();
+    this->setCoordinates(rhs.getX(), rhs.getY());
     return *this;
 }
 
@@ -56,7 +55,7 @@ Point& operator=(const Point& other)
  * @param rhs - the target point to be compared with.
  * return true - iff the points are equal up to epsilon error.
  */
-bool operator==(const Point& rhs)
+bool Point::operator==(const Point& rhs)
 {
     double diffX = std::fabs((getX() - rhs.getX()));
     double diffY = std::fabs((getY() - rhs.getY()));

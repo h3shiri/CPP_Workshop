@@ -31,9 +31,9 @@ public:
     void setCoordinates(CordType x_value, CordType y_value);
 
     /**
-     * overloading the the substitution operator.
-     * @param - the other point to be compared with.
-     * @return - the new point that has been assigned with.
+     * A copy assignment for the equal operator.
+     * @param rhs - the element to be copied from.
+     * @return - the relevant element after copying.
      */
     Point& operator=(const Point& other);
 
