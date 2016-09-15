@@ -5,6 +5,9 @@
 #include "ShapeAlgorithms.h"
 #include "Point.h"
 
+/**
+ * The general class for an Edge.
+ */
 class Edge
 {
 public:

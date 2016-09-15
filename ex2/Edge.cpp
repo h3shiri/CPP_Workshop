@@ -43,7 +43,8 @@ int Edge::checkSide(const Point target) const
 {
     double swag = directedTriangleArea(getFirstPoint(), getSecondPoint(), target);
     /* error checking for epsilon */
-    if ((-EPSILON < swag) && (swag < EPSILON)){
+    if ((-EPSILON < swag) && (swag < EPSILON))
+    {
         swag = ZERO;
     }
 

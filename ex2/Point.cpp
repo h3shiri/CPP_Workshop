@@ -14,7 +14,7 @@ Point::Point(CordType x_value, CordType y_value)
  * A getter function for the X value.
  * return - the appropriate  X-value.
  */
-const CordType Point::getX() const
+CordType Point::getX() const
 {
     return _Xvalue;
 }
@@ -23,7 +23,7 @@ const CordType Point::getX() const
  * A getter function for the Y value.
  * return - the appropriate  Y-value.
  */
-const CordType Point::getY() const
+CordType Point::getY() const
 {
     return _Yvalue;
 }

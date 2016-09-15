@@ -77,6 +77,18 @@ std::string Triangle::getName() const
     return _name;
 }
 
+
+/**
+ * A utility function for printing this triangle.
+ */
+void Triangle::printShape() const
+{
+    Point A = getPoints()[0];
+    Point B = getPoints()[1];
+    Point C = getPoints()[2];
+    printTrig(A.getX(), A.getY(), B.getX(), B.getY(), C.getX(), C.getY());
+}
+
 //TODO: remove silly main
 //int main()
 //{

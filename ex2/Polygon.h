@@ -6,7 +6,11 @@
 
 #include <vector>
 #include "Edge.h"
-
+#include "ShapeAlgorithms.h"
+#include "PrintOuts.h"
+/**
+ *The general class for a shape.
+ */
 class Polygon
 {
 public:
@@ -74,6 +78,11 @@ public:
      * @return - the appropriate string.
      */
     virtual std::string getName() const = 0;
+
+    /**
+     * A pure virtual utility function for printing this shape.
+     */
+    virtual void printShape() const = 0;
 
 private:
     std::vector<Edge> _sides;

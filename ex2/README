@@ -1,0 +1,4 @@
+h3shiri
+
+We build this excersise with few things in mind Inheritance and Polymorphism, in order to make
+our design open-closed. The basic class for a point is Point.

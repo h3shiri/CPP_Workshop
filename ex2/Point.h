@@ -5,8 +5,11 @@
 #include <cmath>
 #include <string>
 
-
-class Point {
+/**
+ * The general class for a point object.
+ */
+class Point 
+{
 public:
     /**
      * The default constructor for the point class.
@@ -17,13 +20,13 @@ public:
      * A getter function for the X value.
      * return - the appropriate  X-value.
      */
-    const CordType getX() const ;
+    CordType getX() const ;
 
     /**
      * A getter function for the Y value.
      * return - the appropriate  Y-value.
      */
-    const CordType getY() const ;
+    CordType getY() const ;
 
     /**
      * A setter function for the internal coordinates.

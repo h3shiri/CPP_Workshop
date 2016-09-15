@@ -2,23 +2,38 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <iomanip>
 #include "Triangle.h"
-#include <string>
 #include "SimpleTrapez.h"
 
 #define TRISIDES 3
 #define TRAPEZSIDES 4
 #define FAIL -1
 #define BUILDERROR "Non valid parameters for building this shape"
+#define WRONGPARAMS "Non valid amount of parameters"
+
+
 
 /* forward declarations */
 Polygon * parseLine(std::string);
 void buildTriangle(Polygon * &shape, std::vector<std::string> rawData);
 void buildTrapez(Polygon * &shape, std::vector<std::string> rawData);
+bool testIntersection(std::vector<Polygon*> array);
+void printTotalArea(std::vector<Polygon*> array);
 
-
+/**
+ * main function of the program Shapes.
+ */
 int main(int argc, char * argv[])
 {
+    std::cout << std::fixed;
+    std::cout << std::setprecision(2);
+    /* checking we inserted the right amount of parameters */
+    if ((argc != 2) && (argc != 3))
+    {
+        std::cerr << WRONGPARAMS;
+        return FAIL;
+    }
     std::streambuf * original_cout = std::cout.rdbuf();
     if (argc == 3)
     {
@@ -42,17 +57,26 @@ int main(int argc, char * argv[])
         array.push_back(nextShape);
     }
 
+    if(testIntersection(array))
+    {
+        return 0;
+    }
+    /* In case all the shapes are non intersecting we print the total area */
+    printTotalArea(array);
 
     std::cin.rdbuf(original_cin);
     std::cout.rdbuf(original_cout);
-
-    //    TODO: remove tests inside the main
-    std::cout << (array[1]->totalArea() + array[0]->totalArea());
     return 0;
 }
 
 void split(const std::string &source, char delim, std::vector<std::string> & elements);
 
+/**
+ * @brief This function parses a line in
+ *        the input file.
+ * @param line The line to parse.
+ * @returns The polygon.
+ */
 Polygon * parseLine(std::string line)
 {
     std::vector<std::string> rawData;
@@ -71,6 +95,10 @@ Polygon * parseLine(std::string line)
 }
 using namespace std;
 
+/**
+ * @brief The function splits a string in a delimiter and
+ *        puts output in vector of string.
+ */
 void split(const string &source, char delim, vector<string> & elements)
 {
     stringstream ss;
@@ -116,3 +144,40 @@ void buildTrapez(Polygon * &shape, std::vector<string> rawData)
     shape = tra;
 }
 
+/**
+ * An important function testing for shapes intersections and printing appropriate messages.
+ * @param array - vector of shapes containing all the relevant shapes.
+ */
+bool testIntersection(std::vector<Polygon*> array)
+{
+    for(unsigned int i = 0; i < array.size(); ++i)
+    {
+        Polygon * shape1 = array[i];
+        for (unsigned int j = (i + 1); j < array.size(); ++j)
+        {
+            Polygon * shape2 = array[j];
+            if(twoShapesIntersectionCheck(shape1, shape2))
+            {
+                shape1->printShape();
+                shape2->printShape();
+                reportDrawIntersect();
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+/**
+ * A utility function for printing the total area.
+ * @param array - vector of shapes containing all the relevant shapes.
+ */
+void printTotalArea(std::vector<Polygon*> array)
+{
+    CordType res = 0;
+    for (unsigned int i = 0; i < array.size(); ++i)
+    {
+        res += array[i]->totalArea();
+    }
+    printArea(res);
+}

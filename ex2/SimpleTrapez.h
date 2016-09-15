@@ -5,7 +5,9 @@
 
 #include "Polygon.h"
 
-
+/**
+ * SimpleTrapeze a general representation of a trapez.
+ */
 class SimpleTrapez : public Polygon
 {
 public:
@@ -41,6 +43,11 @@ public:
      * @return - the appropriate string.
      */
     std::string getName() const;
+
+    /**
+     * A utility function for printing this trapezium.
+     */
+    void printShape() const;
 
 private:
     const int _numOfSizes = 4;

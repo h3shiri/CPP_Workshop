@@ -5,6 +5,9 @@
 
 #include "Polygon.h"
 
+/**
+ * @brief triangle three vertexes three edges swag
+ */
 class Triangle : public Polygon
 {
 public:
@@ -39,6 +42,11 @@ public:
      * @return - the appropriate string.
      */
     std::string getName() const;
+
+    /**
+     * A utility function for printing this triangle.
+     */
+    void printShape() const;
 
 private:
     const int _numOfSizes = 3;

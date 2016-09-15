@@ -39,7 +39,7 @@ bool SimpleTrapez::checkValidity() const
     /* test all the points are distinct */
     for (int i = 0; i < (getNumberOfSides() - 1); ++i)
     {
-        for (int j = i+1; j < getNumberOfSides(); ++j)
+        for (int j = i + 1; j < getNumberOfSides(); ++j)
         {
             if (getPoints()[i] == getPoints()[j])
             {
@@ -88,6 +88,18 @@ CordType SimpleTrapez::totalArea() const
 std::string SimpleTrapez::getName() const
 {
     return _name;
+}
+
+/**
+ * A utility function for printing this trapezium.
+ */
+void SimpleTrapez::printShape() const
+{
+    Point A = getPoints()[0];
+    Point B = getPoints()[1];
+    Point C = getPoints()[2];
+    Point D = getPoints()[3];
+    printTrapez(A.getX(), A.getY(), B.getX(), B.getY(), C.getX(), C.getY(), D.getX(), D.getY());
 }
 
 
