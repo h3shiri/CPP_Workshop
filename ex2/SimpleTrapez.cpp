@@ -81,23 +81,33 @@ CordType SimpleTrapez::totalArea() const
     return ((fabs(directedTriangleArea(A, B, C))) + (fabs(directedTriangleArea(A, C, D))));
 }
 
-//TODO: remove silly main
-int main()
+/**
+ * an important function returning shape's type.
+ * @return - the appropriate string.
+ */
+std::string SimpleTrapez::getName() const
 {
-    Point p_A = Point();
-    CordType X = 5;
-    CordType Y = 0;
-    Point p_B = Point(X,Y);
-    Point p_D = Point(3, 3);
-    Point p_C = Point(4, 3);
-
-    Point p_E = Point(3, 2);
-    Edge e1 = Edge(p_A, p_B);
-    Edge e2 = Edge(p_C, p_D);
-
-    SimpleTrapez T_ABCD = SimpleTrapez(p_A, p_B, p_C, p_D);
-    Polygon  * poly = &T_ABCD;
-    std::cout << "checking point containment with polymorphism: ";
-    std::cout << poly->checkPointIsInside(p_E) << "\n";
-    std::cout << "checking area calculations: " << poly->totalArea() << "\n";
+    return _name;
 }
+
+
+//TODO: remove silly main
+//int main()
+//{
+//    Point p_A = Point();
+//    CordType X = 5;
+//    CordType Y = 0;
+//    Point p_B = Point(X,Y);
+//    Point p_D = Point(3, 3);
+//    Point p_C = Point(4, 3);
+//
+//    Point p_E = Point(3, 2);
+//    Edge e1 = Edge(p_A, p_B);
+//    Edge e2 = Edge(p_C, p_D);
+//
+//    SimpleTrapez T_ABCD = SimpleTrapez(p_A, p_B, p_C, p_D);
+//    Polygon  * poly = &T_ABCD;
+//    std::cout << "checking point containment with polymorphism: ";
+//    std::cout << poly->checkPointIsInside(p_E) << "\n";
+//    std::cout << "checking area calculations: " << poly->totalArea() << "\n";
+//}

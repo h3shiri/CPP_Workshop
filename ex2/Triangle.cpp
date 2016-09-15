@@ -68,6 +68,14 @@ CordType Triangle::totalArea() const
     return fabs(directedTriangleArea(A, B, C));
 }
 
+/**
+ * an important function returning shape's type.
+ * @return - the appropriate string.
+ */
+std::string Triangle::getName() const
+{
+    return _name;
+}
 
 //TODO: remove silly main
 //int main()

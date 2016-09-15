@@ -36,9 +36,15 @@ public:
      */
     CordType totalArea() const;
 
+    /**
+     * an important function returning shape's type.
+     * @return - the appropriate string.
+     */
+    std::string getName() const;
+
 private:
     const int _numOfSizes = 4;
-    const std::string _name = "simpleTrapez";
+    const std::string _name = "SimpleTrapez";
 };
 
 

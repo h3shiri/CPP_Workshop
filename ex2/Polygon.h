@@ -63,6 +63,18 @@ public:
      */
     virtual CordType totalArea() const = 0;
 
+    /**
+     * An important function checking dor the validity of this shape.
+     * @return - true iff this shape is valid.
+     */
+    virtual bool checkValidity() const = 0;
+
+    /**
+     * an important function returning shape's type.
+     * @return - the appropriate string.
+     */
+    virtual std::string getName() const = 0;
+
 private:
     std::vector<Edge> _sides;
     std::vector<Point> _points;
