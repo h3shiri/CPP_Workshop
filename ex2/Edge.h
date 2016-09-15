@@ -43,6 +43,7 @@ public:
 private:
     Point _pointA;
     Point _pointB;
+    const std::string _name = "Edge";
 };
 
 

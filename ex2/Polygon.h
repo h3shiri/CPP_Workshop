@@ -42,7 +42,26 @@ public:
      * A getter function for the points vector.
      * @return - the appropriate vector of points.
      */
-    std::vector<Point> getPoints();
+    std::vector<Point> getPoints() const;
+
+    /**
+     * A simple function returning the number of sides
+     * @return - the appropriate number of sides.
+     */
+    virtual int getNumberOfSides() const = 0;
+
+    /**
+     * A utility function checking whether a given point is inside the shape.
+     * @param target - the given point o be checked.
+     * @return - true iff the point in inside the shape.
+     */
+    bool checkPointIsInside(const Point& target);
+
+    /**
+     * An important function that returns the polygon's area.
+     * @return - the appropriate value.
+     */
+    virtual CordType totalArea() const = 0;
 
 private:
     std::vector<Edge> _sides;

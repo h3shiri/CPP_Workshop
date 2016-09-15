@@ -73,21 +73,3 @@ bool Edge::intersection(const Edge rhs)
     return (check1 && check2);
 }
 
-// TODO: remove redundant main..
-
-int main()
-{
-    Point p_A = Point();
-    CordType X = 5;
-    CordType Y = 0;
-    Point p_B = Point(X,Y);
-    Point p_C = Point(3,3);
-    Point p_D = Point(2,-2);
-    Edge e1 = Edge(p_A, p_B);
-    Edge e2 = Edge(p_C, p_D);
-
-    std::cout << "check intersection: ";
-    std::cout << e1.intersection(e2) << "\n";
-
-    return 0;
-}

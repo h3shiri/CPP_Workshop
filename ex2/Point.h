@@ -3,6 +3,8 @@
 
 #include "Defs.h"
 #include <cmath>
+#include <string>
+
 
 class Point {
 public:
@@ -47,6 +49,7 @@ public:
 private:
     CordType _Xvalue;
     CordType _Yvalue;
+    const std::string _name = "Point";
 };
 
 

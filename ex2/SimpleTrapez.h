@@ -1,11 +1,12 @@
 
-#ifndef EX2_TRIANGLE_H
-#define EX2_TRIANGLE_H
 
+#ifndef EX2_SIMPLETRAPEZ_H
+#define EX2_SIMPLETRAPEZ_H
 
 #include "Polygon.h"
 
-class Triangle : public Polygon
+
+class SimpleTrapez : public Polygon
 {
 public:
     /**
@@ -13,11 +14,12 @@ public:
      * @param A - the first point.
      * @param B -  the second point.
      * @param C - the third point.
+     * @param D - the forth point.
      */
-    Triangle(const Point A = Point(), const Point B = Point (), const Point C = Point());
+    SimpleTrapez(const Point A = Point(), const Point B = Point (), const Point C = Point(), const Point D = Point());
 
     /**
-     * An important function checking dor the validity of this triangle.
+     * An important function checking dor the validity of this simple trapeze.
      * @return - true iff this triangle is valid.
      */
     bool checkValidity() const;
@@ -35,9 +37,9 @@ public:
     CordType totalArea() const;
 
 private:
-    const int _numOfSizes = 3;
-    const std::string _name = "Triangle";
+    const int _numOfSizes = 4;
+    const std::string _name = "simpleTrapez";
 };
 
 
-#endif //EX2_TRIANGLE_H
+#endif //EX2_SIMPLETRAPEZ_H

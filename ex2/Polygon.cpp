@@ -39,16 +39,34 @@ std::vector<Edge> Polygon::getEdges()
  * A getter function for the points vector.
  * @return - the appropriate vector of points.
  */
-std::vector<Point> Polygon::getPoints()
+std::vector<Point> Polygon::getPoints() const
 {
     return _points;
 }
 
 
 /**
- * A simple destructor.
+ * A simple destructor no memory to release.
  */
 Polygon::~Polygon()
 {
     return;
+}
+/**
+ * A utility function checking whether a given point is inside the shape.
+ * @param target - the given point o be checked.
+ * @return - true iff the point in inside the shape.
+ */
+bool Polygon::checkPointIsInside(const Point& target)
+{
+    bool res = true;
+    int side = getEdges()[0].checkSide(target);
+    for (int i = 0; i < getNumberOfSides(); ++i)
+    {
+        if(side != getEdges()[i].checkSide(target))
+        {
+            res = false;
+        }
+    }
+    return res;
 }
