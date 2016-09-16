@@ -101,25 +101,3 @@ void SimpleTrapez::printShape() const
     Point D = getPoints()[3];
     printTrapez(A.getX(), A.getY(), B.getX(), B.getY(), C.getX(), C.getY(), D.getX(), D.getY());
 }
-
-
-//TODO: remove silly main
-//int main()
-//{
-//    Point p_A = Point();
-//    CordType X = 5;
-//    CordType Y = 0;
-//    Point p_B = Point(X,Y);
-//    Point p_D = Point(3, 3);
-//    Point p_C = Point(4, 3);
-//
-//    Point p_E = Point(3, 2);
-//    Edge e1 = Edge(p_A, p_B);
-//    Edge e2 = Edge(p_C, p_D);
-//
-//    SimpleTrapez T_ABCD = SimpleTrapez(p_A, p_B, p_C, p_D);
-//    Polygon  * poly = &T_ABCD;
-//    std::cout << "checking point containment with polymorphism: ";
-//    std::cout << poly->checkPointIsInside(p_E) << "\n";
-//    std::cout << "checking area calculations: " << poly->totalArea() << "\n";
-//}

@@ -6,7 +6,7 @@
 #include "Polygon.h"
 
 /**
- * SimpleTrapeze a general representation of a trapez.
+ * SimpleTrapeze a general representation of a trapez object.
  */
 class SimpleTrapez : public Polygon
 {

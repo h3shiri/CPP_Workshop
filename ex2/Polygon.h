@@ -8,6 +8,7 @@
 #include "Edge.h"
 #include "ShapeAlgorithms.h"
 #include "PrintOuts.h"
+
 /**
  *The general class for a shape.
  */

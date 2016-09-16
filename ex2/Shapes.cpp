@@ -11,6 +11,8 @@
 #define FAIL -1
 #define BUILDERROR "Non valid parameters for building this shape"
 #define WRONGPARAMS "Non valid amount of parameters"
+#define TRIANGLE 'T'
+#define TRAPEZ 't'
 
 
 
@@ -83,11 +85,11 @@ Polygon * parseLine(std::string line)
     split(line, '\t', rawData);
     Polygon * res;
     /* break into the shape various cases */
-    if(rawData[0][0] == 'T')
+    if(rawData[0][0] == TRIANGLE)
     {
         buildTriangle(res, rawData);
     }
-    else if(rawData[0][0] == 't')
+    else if(rawData[0][0] == TRAPEZ)
     {
         buildTrapez(res, rawData);
     }
@@ -111,7 +113,11 @@ void split(const string &source, char delim, vector<string> & elements)
 }
 
 
-
+/**
+ * Autitlity function for building a triangle object from input.
+ *@param shape - the pointer that shall contain the new shape.
+ *@param rawData - A vector cotaining all the necessary raw data.
+ */
 void buildTriangle(Polygon * &shape, std::vector<string> rawData)
 {
     int j = 0;
@@ -128,6 +134,11 @@ void buildTriangle(Polygon * &shape, std::vector<string> rawData)
     shape = tri;
 }
 
+/**
+ * Autitlity function for building a simpleTrapez object from input.
+ *@param shape - the pointer that shall contain the new shape.
+ *@param rawData - A vector cotaining all the necessary raw data.
+ */
 void buildTrapez(Polygon * &shape, std::vector<string> rawData)
 {
     int j = 0;

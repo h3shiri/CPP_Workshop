@@ -1,3 +1,16 @@
 #IDE non relevant files
 *.idea
 *.xml
+#Output files from verious tests
+Output/*
+schoolSol/*
+tests_examples/*
+
+#Object files
+*.o
+
+#Execution object and folders
+Shapes
+test_examples
+schoolSol
+

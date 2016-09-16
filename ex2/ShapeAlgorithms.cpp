@@ -22,6 +22,7 @@ double directedTriangleArea(const Point A, const Point B, const Point C)
  */
 bool twoShapesIntersectionCheck(Polygon * shape1, Polygon * shape2)
 {
+    /* testing for edges intersection */
     int i = shape1->getNumberOfSides();
     int j = shape2->getNumberOfSides();
     for (int k = 0; k < i; ++k)
@@ -36,6 +37,16 @@ bool twoShapesIntersectionCheck(Polygon * shape1, Polygon * shape2)
             }
         }
     }
+    /* testing for internal containment */
+    Point A = shape1->getPoints()[0];
+    Point B = shape2->getPoints()[0];
+
+    if ((shape1->checkPointIsInside(B)) || (shape2->checkPointIsInside(A)))
+    {
+        return true;
+    }
+
+
     return false;
 }
 

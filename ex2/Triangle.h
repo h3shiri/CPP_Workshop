@@ -6,7 +6,8 @@
 #include "Polygon.h"
 
 /**
- * @brief triangle three vertexes three edges swag
+ * @brief triangle three vertexes three edges, A classic representation of 
+ * the holy triangle.
  */
 class Triangle : public Polygon
 {
