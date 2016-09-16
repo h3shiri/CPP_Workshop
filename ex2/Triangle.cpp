@@ -88,21 +88,3 @@ void Triangle::printShape() const
     Point C = getPoints()[2];
     printTrig(A.getX(), A.getY(), B.getX(), B.getY(), C.getX(), C.getY());
 }
-
-//TODO: remove silly main
-//int main()
-//{
-//    Point p_A = Point();
-//    CordType X = 5;
-//    CordType Y = 0;
-//    Point p_B = Point(X,Y);
-//    Point p_C = Point(3, 3);
-//    Point p_D = Point(3, 1);
-//    Edge e1 = Edge(p_A, p_B);
-//    Edge e2 = Edge(p_C, p_D);
-//
-//    Triangle T_ABC = Triangle(p_A, p_B, p_C);
-//    Polygon  * poly = &T_ABC;
-//    std::cout << "checking point containment with polymorphism: ";
-//    std::cout << poly->checkPointIsInside(p_D) << "\n";
-//}

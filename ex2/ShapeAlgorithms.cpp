@@ -49,16 +49,3 @@ bool twoShapesIntersectionCheck(Polygon * shape1, Polygon * shape2)
 
     return false;
 }
-
-//TODO: remove silly main
-//int main()
-//{
-//    Point p_A = Point();
-//    CordType X = 5;
-//    CordType Y = 0;
-//    Point p_B = Point(X,Y);
-//    Point p_C = Point(3,3);
-//
-//    std::cout << directedTriangleArea(p_B, p_A, p_C) << "\n";
-//    return 0;
-//}

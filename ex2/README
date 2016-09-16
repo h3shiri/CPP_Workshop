@@ -1,4 +1,20 @@
 h3shiri
 
 We build this excersise with few things in mind Inheritance and Polymorphism, in order to make
-our design open-closed. The basic class for a point is Point.
+our design open-closed. The basic class for a point is Point, for an Edge is Edge and so on most
+of our classes are self discriptive from the name.
+
+Few clarfications in the inheritance structure:
+1) Polygon is our base class for any shape in this project, it behaves like an abstract class
+and has several virtual methods in order to make our design open close as much as possible.
+
+2) Triangle and SimpleTrapez both inherent from the polygon class and ovveride all the pure virtual
+functions. In addition we use ShapeAlgorithms to calculate various operatoins such as area
+and point containment.
+
+In the main driver (aka the Shapes file) we use extenside Polymorphism in order to make our code
+extendable in the future. Currently the main bottleneck in our design is the printing due to the
+fact we don't currently have a generic printOut function for any Polygon. We internally have
+Single choice switch that selects according to name the appropriate printOut function.
+
+Bis vincit qui se vincit in Victoria.
