@@ -1,0 +1,5 @@
+#Compilation files
+*.o
+#IDE files
+*.xml
+*.iml
