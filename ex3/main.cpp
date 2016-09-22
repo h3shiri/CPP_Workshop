@@ -17,5 +17,6 @@ int main()
     Matrix<int> mat3 = Matrix<int>(2, 2);
     mat3 = (mat1 * mat2);
     cout << mat3;
+    cout << (mat1.trans());
     return 0;
 }

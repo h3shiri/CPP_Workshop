@@ -106,6 +106,15 @@ public:
      */
     T & operator()(unsigned int row, unsigned int col);
 
+
+    /**
+     * A useful function for getting a specific element.
+     * @param row - the relevant row.
+     * @param col - the relevant column.
+     * @return - the relevant value.
+     */
+    T operator()(unsigned int row, unsigned int col) const;
+
     /**
      * An implementation for the plus equal operator.
      * @param other - the other matrix that shall be added.
@@ -134,6 +143,38 @@ public:
      * @return - the new modified matrix.
      */
     Matrix<T> operator *(const Matrix<T>& rhs);
+
+    /**
+     * An override for the equal operator.
+     * @param other - the other matrix to be submitted.
+     * @return - true iff the matrices are equal.
+     */
+    bool operator==(const Matrix<T>& other) const;
+
+    /**
+     * An override for the non equal operator.
+     * @param other - the other matrix to be submitted.
+     * @return - true iff the matrices are not equal.
+     */
+    bool operator!=(const Matrix<T>& rhs) const;
+
+    /**
+     * A transpose operation which is quite useful for any matrix.
+     * return - the relevant new transposed matrix.
+     */
+    Matrix<T> trans() const;
+
+    /**
+     * A bidirectional iterator from the beginning of the matrix
+     * @return - the appropriate iterator
+     */
+    typename vec::iterator begin() const;
+
+    /**
+     * A bidirectional iterator from the end of the matrix
+     * @return - the appropriate iterator
+     */
+    typename std::vector<T>::iterator end() const;
 
 private:
     unsigned int _rows;
@@ -280,7 +321,22 @@ Matrix<T>& Matrix<T>::operator=(const Matrix& other)
 }
 
 /**
- * A useful function for getting a specific element.
+ * A useful function for getting a specific element copy.
+ * @param row - the relevant row.
+ * @param col - the relevant column.
+ * @return - the relevant value.
+ */
+template <typename T>
+T Matrix<T>::operator()(unsigned int row, unsigned int col) const
+{
+    unsigned int index = ((row * cols()) + col);
+//    TODO : throw out of bound exception.
+    return _matrix[index];
+}
+
+
+/**
+ * A useful function for getting a specific element mutable
  * @param row - the relevant row.
  * @param col - the relevant column.
  * @return - the relevant value.
@@ -292,6 +348,7 @@ T & Matrix<T>::operator()(unsigned int row, unsigned int col)
 //    TODO : throw out of bound exception.
     return _matrix[index];
 }
+
 
 //TODO: potential bonus.
 /**
@@ -426,4 +483,81 @@ std::ostream& operator<< (std::ostream& stream, const Matrix<T>& matrix)
         stream << NEWLINE;
     }
     return stream;
+}
+
+
+/**
+ * An override for the equal operator.
+ * @param other - the other matrix to be submitted.
+ * @return - true iff the matrices are equal.
+ */
+template <typename T>
+bool Matrix<T>::operator==(const Matrix<T>& rhs) const
+{
+    /* checking dimensions first */
+    if(!((rows() == rhs.rows()) && (cols() == rhs.cols())))
+    {
+        return false;
+    }
+    for (unsigned int i = 0; i < (cols() * rows()); ++i)
+    {
+        /* checking for non matching elements */
+        if(_matrix[i] != rhs._matrix[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * An override for the non equal operator.
+ * @param other - the other matrix to be submitted.
+ * @return - true iff the matrices are not equal.
+ */
+template <typename T>
+bool Matrix<T>::operator!=(const Matrix<T>& rhs) const
+{
+    return !(*this == rhs);
+}
+
+/**
+ * A transpose operation which is quite useful for any matrix.
+ * return - the relevant new transposed matrix.
+ */
+template <typename T>
+Matrix<T> Matrix<T>::trans() const
+{
+    Matrix<T> res = Matrix<T>(cols(), rows());
+    unsigned int readingIndex = ZERO;
+    for (unsigned int i = 0; i < rows(); ++i)
+    {
+        for (unsigned int j = 0; j < cols(); ++j)
+        {
+            unsigned int insertionIndex = ((j * rows()) + i);
+            res._matrix[insertionIndex] = getMatrix()[readingIndex];
+            ++readingIndex;
+        }
+    }
+    return res;
+}
+
+/**
+ * A bidirectional iterator from the beginning of the matrix
+ * @return - the appropriate iterator
+ */
+template <typename T>
+typename std::vector<T>::iterator Matrix<T>::begin() const
+{
+    return _matrix.begin();
+}
+
+/**
+ * A bidirectional iterator from the end of the matrix
+ * @return - the appropriate iterator
+ */
+template <typename T>
+typename std::vector<T>::iterator Matrix<T>::end() const
+{
+    return _matrix.end();
 }
