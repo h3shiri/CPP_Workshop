@@ -4,25 +4,26 @@ flags=-Wextra -Wall -Wvla -pthread -std=c++11
 default: clean GenericMatrixDriver
 
 main.o: main.cpp Matrix.hpp
-	$(CC) $(flags) -c main.cpp -o main.o
+	$(CC) $(flags) -c main.cpp -o main
 
-main:
+main: main.o Matrix.o
+	$(CC) $(flags) Matrix.o main.o -o main
 	./main
 
-GenericMatrixDriver: GenericMatrixDriver.o Matrix.o
-	$(CC) $(flags) Matrix.o GenericMatrixDriver.o -o GenericMatrixDriver
+GenericMatrixDriver: GenericMatrixDriver.o Complex.o
+	$(CC) $(flags) GenericMatrixDriver.o Complex.o -o GenericMatrixDriver
 
-GenericMatrixDriver.o: GenericMatrixDriver.cpp Matrix.hpp
+Matrix: Matrix.hpp Complex.h
+	$(CC) $(flags) -c Matrix.hpp
+
+GenericMatrixDriver.o: GenericMatrixDriver.cpp
 	$(CC) $(flags) -c GenericMatrixDriver.cpp -o GenericMatrixDriver.o
 
-Matrix.hpp.gch: Matrix.hpp
-	$(CC) $(flags) -c Matrix.hpp -o Matrix.hpp.gch
+Complex.o: Complex.cpp Complex.h
+	$(CC) $(flags) -c Complex.cpp -o Complex.o
 
-Matrix.o: Matrix.hpp.gch
-	$(CC) $(flags) -c Matrix.hpp.gch -o Matrix.o
-
-tar: Makefile README $(all_headers) $(all_cpp)
+tar: Makefile Matrix.hpp
 	tar cvf ex3.tar Makefile Matrix.hpp 
 
 clean:
-	rm -f *.o GenericMatrixDriver ex3.tar *.gch
+	rm -f *.o GenericMatrixDriver main Matrix ex3.tar *.gch

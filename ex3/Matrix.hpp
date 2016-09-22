@@ -1,19 +1,21 @@
 #define ONE 1
 #define ZERO 0
-#define DELIM '\t'
+#define MYDELIM '\t'
 #define NEWLINE '\n'
 
 #include <functional>
 #include <numeric>
 #include "Complex.h"
+#include <vector>
 template <typename T>
 /**
  * A generic representation of the matrix class.
  */
 class Matrix
 {
-typedef std::vector<T> vec;
 public:
+    typedef typename std::vector<T> vec;
+    typedef typename std::vector<T>::const_iterator const_iterator;
     /**
      * The default constructor.
      */
@@ -128,7 +130,7 @@ public:
      * @param rhs - the right hand matrix that shall be added.
      * @return - the new modified matrix.
      */
-    Matrix<T>& operator +(const Matrix<T>& rhs);
+    Matrix<T> operator +(const Matrix<T>& rhs);
 
     /**
      * An implementation for the minus operator.
@@ -168,13 +170,13 @@ public:
      * A bidirectional iterator from the beginning of the matrix
      * @return - the appropriate iterator
      */
-    typename vec::iterator begin() const;
+    const_iterator begin() const;
 
     /**
      * A bidirectional iterator from the end of the matrix
      * @return - the appropriate iterator
      */
-    typename std::vector<T>::iterator end() const;
+    const_iterator end() const;
 
 private:
     unsigned int _rows;
@@ -357,13 +359,13 @@ T & Matrix<T>::operator()(unsigned int row, unsigned int col)
  * @return - the new modified matrix.
  */
 template <typename T>
-Matrix<T>& Matrix<T>::operator+(const Matrix<T>& rhs)
+Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
 {
     Matrix<T> res = Matrix<T>(rhs.rows(), rhs.cols());
     //    TODO: throw a beautiful number of exceptions (dimensions).
     for (unsigned int i = 0; i < (rhs.rows() * rhs.cols()); ++i)
     {
-        res.getMatrix()[i] = (getMatrix()[i] + rhs.getMatrix()[i]);
+        res._matrix[i] = (_matrix[i] + rhs._matrix[i]);
     }
     return res;
 }
@@ -381,7 +383,7 @@ Matrix<T>& Matrix<T>::operator-(const Matrix<T>& rhs)
 //    TODO: throw a beautiful number of exceptions (dimensions).
     for (unsigned int i = 0; i < (rhs.rows() * rhs.cols()); ++i)
     {
-        res.getMatrix()[i] = (getMatrix()[i] - rhs.getMatrix()[i]);
+        res._matrix[i] = (getMatrix()[i] - rhs.getMatrix()[i]);
     }
     return res;
 }
@@ -420,7 +422,6 @@ Matrix<T> Matrix<T>::operator *(const Matrix<T>& rhs)
     for(unsigned int i = 0; i < rows(); ++i)
     {
         vec tempRow = getRowVector(i);
-        T tempSum = T(0);
         for (unsigned int j = 0; j < rhs.cols(); ++j)
         {
             vec tempCol = rhs.getColVector(j);
@@ -477,7 +478,7 @@ std::ostream& operator<< (std::ostream& stream, const Matrix<T>& matrix)
     {
         for (unsigned int j = 0; j < matrix.cols(); ++j)
         {
-            stream << matrix.getMatrix()[index] << DELIM;
+            stream << matrix.getMatrix()[index] << MYDELIM;
             ++index;
         }
         stream << NEWLINE;
@@ -568,7 +569,7 @@ Matrix<Complex> Matrix<Complex>::trans() const
  * @return - the appropriate iterator
  */
 template <typename T>
-typename std::vector<T>::iterator Matrix<T>::begin() const
+typename std::vector<T>::const_iterator Matrix<T>::begin() const
 {
     return _matrix.begin();
 }
@@ -578,7 +579,7 @@ typename std::vector<T>::iterator Matrix<T>::begin() const
  * @return - the appropriate iterator
  */
 template <typename T>
-typename std::vector<T>::iterator Matrix<T>::end() const
+typename std::vector<T>::const_iterator Matrix<T>::end() const
 {
     return _matrix.end();
 }
