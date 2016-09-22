@@ -2,11 +2,20 @@
 #define ZERO 0
 #define MYDELIM '\t'
 #define NEWLINE '\n'
+#define MYERRORMSG "We have a mismatch between several parametres, please review input"
+
 
 #include <functional>
 #include <numeric>
 #include "Complex.h"
 #include <vector>
+#include <exception>
+
+/**
+ * A personal exception for non matching parameters
+ */
+struct MyException;
+
 template <typename T>
 /**
  * A generic representation of the matrix class.
@@ -46,7 +55,7 @@ public:
      * A useful move constructor for our matrix
      * @param other - rvalue for setting our matrix.
      */
-    Matrix(Matrix<T>&& other);
+    Matrix(Matrix<T> && other);
 
     /**
      * An override for the assignment operator.
@@ -238,7 +247,7 @@ Matrix<T>::Matrix(unsigned int row, unsigned int cols, const vec& cells):
  * @param other - rvalue for setting our matrix.
  */
 template <typename T>
-Matrix<T>::Matrix(Matrix<T>&& other):
+Matrix<T>::Matrix(Matrix<T> && other):
     _rows(other.rows()), _cols(other.cols()), _matrix(std::move(other.getMatrix()))
 {
     return;
@@ -332,7 +341,11 @@ template <typename T>
 T Matrix<T>::operator()(unsigned int row, unsigned int col) const
 {
     unsigned int index = ((row * cols()) + col);
-//    TODO : throw out of bound exception.
+    /* In case we are out of bounds */
+    if ((index < ZERO) || (index > (cols() * rows())))
+    {
+        throw MyException();
+    }
     return _matrix[index];
 }
 
@@ -347,12 +360,14 @@ template <typename T>
 T & Matrix<T>::operator()(unsigned int row, unsigned int col)
 {
     unsigned int index = ((row * cols()) + col);
-//    TODO : throw out of bound exception.
+    /* In case we are out of bounds */
+    if ((index < ZERO) || (index > (cols() * rows())))
+    {
+        throw MyException();
+    }
     return _matrix[index];
 }
 
-
-//TODO: potential bonus.
 /**
  * An implementation for the plus operator.
  * @param rhs - the right hand matrix that shall be added.
@@ -362,7 +377,11 @@ template <typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
 {
     Matrix<T> res = Matrix<T>(rhs.rows(), rhs.cols());
-    //    TODO: throw a beautiful number of exceptions (dimensions).
+    /* In case we have non matching dimensions */
+    if (!((rows() == rhs.rows()) && (cols() == rhs.cols())))
+    {
+        throw MyException();
+    }
     for (unsigned int i = 0; i < (rhs.rows() * rhs.cols()); ++i)
     {
         res._matrix[i] = (_matrix[i] + rhs._matrix[i]);
@@ -370,7 +389,6 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
     return res;
 }
 
-//TODO: potential bonus.
 /**
  * An implementation for the minus operator.
  * @param rhs - the right hand matrix that shall be added.
@@ -379,8 +397,12 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
 template <typename T>
 Matrix<T>& Matrix<T>::operator-(const Matrix<T>& rhs)
 {
+    /* In case we have non matching dimensions */
+    if (!((rows() == rhs.rows()) && (cols() == rhs.cols())))
+    {
+        throw MyException();
+    }
     Matrix res = Matrix<T>(rhs.rows(), rhs.cols());
-//    TODO: throw a beautiful number of exceptions (dimensions).
     for (unsigned int i = 0; i < (rhs.rows() * rhs.cols()); ++i)
     {
         res._matrix[i] = (getMatrix()[i] - rhs.getMatrix()[i]);
@@ -399,7 +421,11 @@ template <typename T>
 template<typename U>
 Matrix<T>& Matrix<T>::operator +=(const Matrix<U>& other)
 {
-//    TODO: throw a beautiful number of exceptions (dimensions).
+    /* In case we have non matching dimensions */
+    if (!((rows() == other.rows()) && (cols() == other.cols())))
+    {
+        throw MyException();
+    }
     for (unsigned int i = 0; i < (other.rows() * other.cols()); ++i)
     {
         _matrix[i] += other.getMatrix()[i];
@@ -417,7 +443,12 @@ template <typename T>
 Matrix<T> Matrix<T>::operator *(const Matrix<T>& rhs)
 {
     Matrix<T> res = Matrix<T>(rows(), rhs.cols());
-//    TODO: throw error in case of non matching dimensions (cols of lhs to rows of rhs)
+    /* In case we have non matching dimensions between the matrices */
+    if (cols() != rhs.rows())
+    {
+        throw MyException();
+    }
+
     unsigned int insertionIndex = ZERO;
     for(unsigned int i = 0; i < rows(); ++i)
     {
@@ -583,3 +614,14 @@ typename std::vector<T>::const_iterator Matrix<T>::end() const
 {
     return _matrix.end();
 }
+
+/**
+ * A special error various cases in our matrix.
+ */
+struct MyException : public std::exception
+{
+    const char * what() const throw()
+    {
+        return MYERRORMSG;
+    }
+};
