@@ -1,5 +1,6 @@
 #Compilation files
 *.o
+*.gch
 #IDE files
 *.xml
 *.iml

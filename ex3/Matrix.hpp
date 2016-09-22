@@ -5,7 +5,7 @@
 
 #include <functional>
 #include <numeric>
-
+#include "Complex.h"
 template <typename T>
 /**
  * A generic representation of the matrix class.
@@ -536,6 +536,27 @@ Matrix<T> Matrix<T>::trans() const
         {
             unsigned int insertionIndex = ((j * rows()) + i);
             res._matrix[insertionIndex] = getMatrix()[readingIndex];
+            ++readingIndex;
+        }
+    }
+    return res;
+}
+
+/**
+ * A transpose operation specifically for a Complex matrix.
+ * return - the relevant new transposed matrix.
+ */
+template <>
+Matrix<Complex> Matrix<Complex>::trans() const
+{
+    Matrix<Complex> res = Matrix<Complex>(cols(), rows());
+    unsigned int readingIndex = ZERO;
+    for (unsigned int i = 0; i < rows(); ++i)
+    {
+        for (unsigned int j = 0; j < cols(); ++j)
+        {
+            unsigned int insertionIndex = ((j * rows()) + i);
+            res._matrix[insertionIndex] = getMatrix()[readingIndex].conj();
             ++readingIndex;
         }
     }
